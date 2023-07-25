@@ -1,0 +1,16 @@
+/* buttons */
+
+.buttons{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  button{
+    width: 23%;
+    box-sizing: border-box;
+  }
+
+  /* Screen */
+  #screen {
+    text-align: right;
+  }
