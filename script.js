@@ -34,12 +34,53 @@ for (let i = 0; i < numberButtons.length; i++) {
 }
 
 //funkcja ktora sprawdza klikniecia w dzialania matematyczne
-const mathFunctionButton= document.getElementsByClassName('mathFunctionButton');
+const mathFunctionButton = document.getElementsByClassName('mathFunctionButton');
 for (let i = 0; i < mathFunctionButton.length; i++) {
     mathFunctionButton[i].addEventListener('click', addMathFunction);
 }
 
-// funkcja ktora sprawdza jakie dzialanie chcesz wykonac
+//funkcja uruchamiajaca dzialanie po nacisnieciu "="
+const equalsButton = document.getElementsByClassName('equalsButton');
+for (let i = 0; i < equalsButton.length; i++) {
+    equalsButton[i].addEventListener('click', equalsFunction(mathFunction, screenNumber));
+}
+
+
+// funkcja ktora sprawdza jakie dzialanie chcesz wykonac i zwraca taka wartosc
 function addMathFunction(event) {
     let mathFunction = this.id;
+    alert(mathFunction);
+    resetScreenNumber();
+    createFirstNumber(screenNumber)
+    screen.textContent = mathFunction;
+    return mathFunction;
+}
+
+//funkcja ktora resetuje numer ekranowy i przypisuje wartosc do nowej zmiennej
+function createFirstNumber(screenNumber) {
+    let firstNumber = screenNumber;
+    return firstNumber;
+}
+
+function resetScreenNumber () {
+    return screenNumber = 0;
+}
+
+function createSecondNumber(screenNumber) {
+    return secondNumber = screenNumber;
+}
+
+function equalsFunction(mathFunction, screenNumber) {
+    createSecondNumber(screenNumber);
+    alert(mathFunction);
+    let result;
+    switch (mathFunction) {
+        case '+':
+            return result = firstNumber + secondNumber;
+        case '-':
+            return result = firstNumber - secondNumber;
+        case '*':
+            return result = firstNumber * secondNumber;
+    }
+    alert(result);
 }
