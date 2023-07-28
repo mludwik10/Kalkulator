@@ -1,8 +1,9 @@
 //rozpoczecie strony
 const screen = document.getElementById('screen');
 const mathFunctionScreen = document.getElementById('mathFunctionScreen');
+const firstNumberScreen = document.getElementById('firstNumberScreen')
 let screenNumber = 0;
-let mathFunction = 0;
+let firstNumber;
 refreshScreenNumber (screenNumber);
 
 
@@ -21,7 +22,9 @@ for (let i = 0; i < mathFunctionButton.length; i++) {
 }
 
 //funkcja uruchamiajaca dzialanie po nacisnieciu "="
-document.getElementById('equalsButton').addEventListener('click', obliczanie(mathFunction, screenNumber));
+document.getElementById('equalsButton').addEventListener('click', function() {
+    obliczanie(screenNumber);  
+});
 
 
 //dzialanie przycisku clear 'C'
@@ -49,17 +52,19 @@ function clearScreen () {
 
 // funkcja ktora sprawdza jakie dzialanie chcesz wykonac i zwraca taka wartosc
 function addMathFunction(event) {
+    createFirstNumber(screenNumber);
     let mathFunction = this.id;
     resetScreenNumber();
-    createFirstNumber(screenNumber)
     mathFunctionScreen.textContent = mathFunction;
     return mathFunction;
 }
 
-function obliczanie(mathFunction, screenNumber) {
-    createSecondNumber(screenNumber);
+function obliczanie(screenNumber) {
+    let mathFunctionFromScreen = document.getElementById('mathFunctionScreen').textContent;
+    firstNumber = Number(firstNumberScreen.textContent);
+    secondNumber = Number(screen.textContent);
     let result;
-    switch (mathFunction) {
+    switch (mathFunctionFromScreen) {
         case '+':
             result = firstNumber + secondNumber;
             break;
@@ -70,9 +75,9 @@ function obliczanie(mathFunction, screenNumber) {
             result = firstNumber * secondNumber;
             break;
     }
-    alert(result)
-    return result;
 
+    screenNumber = result;
+    refreshScreenNumber(screenNumber);
 } 
 
 
@@ -80,16 +85,13 @@ function obliczanie(mathFunction, screenNumber) {
 
 //funkcja ktora resetuje numer ekranowy i przypisuje wartosc do nowej zmiennej
 function createFirstNumber(screenNumber) {
-    let firstNumber = screenNumber;
-    return firstNumber;
+    firstNumber = screenNumber;
+    firstNumberScreen.textContent = screenNumber;
+
 }
 
 function resetScreenNumber () {
     return screenNumber = 0;
-}
-
-function createSecondNumber(screenNumber) {
-    return secondNumber = screenNumber;
 }
 
 // odswieza numer na ekranie
