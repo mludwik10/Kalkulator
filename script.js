@@ -4,7 +4,7 @@ const mathFunctionScreen = document.getElementById('mathFunctionScreen');
 const firstNumberScreen = document.getElementById('firstNumberScreen')
 let screenNumber = 0;
 let firstNumber;
-refreshScreenNumber (screenNumber);
+refreshScreenNumber(screenNumber);
 
 
 // ŚLEDZENIE KLIKNIĘĆ PRZYCISKOW
@@ -22,8 +22,8 @@ for (let i = 0; i < mathFunctionButton.length; i++) {
 }
 
 //funkcja uruchamiajaca dzialanie po nacisnieciu "="
-document.getElementById('equalsButton').addEventListener('click', function() {
-    obliczanie(screenNumber);  
+document.getElementById('equalsButton').addEventListener('click', function () {
+    obliczanie(screenNumber);
 });
 
 
@@ -33,17 +33,17 @@ document.getElementById('clear').addEventListener('click', clearScreen);
 
 // funkcja zbiera klik z ekranu. Jezeloi na ekranie jest 0 to je zastepuje, a jezeli
 // inna liczba to dodaje zebrana cyfre na koniec
-function addNewDigit (event) {
+function addNewDigit(event) {
     let newDigit = event.target.textContent;
     if (screenNumber == 0) {
         screenNumber = newDigit;
     } else {
         screenNumber += newDigit;
     }
-    refreshScreenNumber (screenNumber);   
+    refreshScreenNumber(screenNumber);
 }
 
-function clearScreen () {
+function clearScreen() {
     screenNumber = 0;
     alert('halo');
     refreshScreenNumber(screenNumber);
@@ -55,6 +55,7 @@ function addMathFunction(event) {
     createFirstNumber(screenNumber);
     let mathFunction = this.id;
     resetScreenNumber();
+
     mathFunctionScreen.textContent = mathFunction;
     return mathFunction;
 }
@@ -78,7 +79,7 @@ function obliczanie(screenNumber) {
 
     screenNumber = result;
     refreshScreenNumber(screenNumber);
-} 
+}
 
 
 // GŁĘBSZE FUNKCJE
@@ -90,11 +91,11 @@ function createFirstNumber(screenNumber) {
 
 }
 
-function resetScreenNumber () {
+function resetScreenNumber() {
     return screenNumber = 0;
 }
 
 // odswieza numer na ekranie
-function refreshScreenNumber (screenNumber) {
+function refreshScreenNumber(screenNumber) {
     screen.textContent = screenNumber;
 }
